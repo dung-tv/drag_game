@@ -1,103 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Game</title>
 	<style>
-		*{
+		* {
 			box-sizing: border-box;
 			margin: 0;
 			padding: 0;
 		}
-		.container{
+
+		.container {
 			text-align: center;
 			background: #fff;
 			max-width: 1000px;
 			margin: auto;
 		}
-		.main{
+
+		.main {
 			margin-top: 8px;
 		}
-		.head h2{
+
+		.head h2 {
 			margin: 20px 0;
 			color: #0b2c7a;
 		}
-		.main span{
+
+		.main span {
 			display: block;
 			border: 1px solid #7d9ecd;
 		}
-		.main .question .top, .main .question .bot{
+
+		.main .question .top,
+		.main .question .bot {
 			display: flex;
 			justify-content: center;
 		}
-		.main .question span{
+
+		.main .question span {
 			width: 180px;
 			height: 80px;
 			margin: 8px 20px;
 			display: flex;
 			align-items: center;
 			background: #dce6f2;
+			cursor: grab;
 		}
-		.main .answer .top, .main .answer .bot{
+
+		.main .answer .top,
+		.main .answer .bot {
 			display: flex;
 			justify-content: center;
 		}
-		.main .answer span{
+
+		.main .answer span {
 			width: 100%;
 			height: 100px;
 			margin: 8px 20px;
 			background: #dce6f2;
 			text-align: left;
 		}
-		.foot span{
+
+		.foot span {
 			padding: 8px;
 			border: 1px solid #7d9ecd;
 			cursor: pointer;
 		}
-		.foot .right .action, .foot{
+
+		.foot .right .action,
+		.foot {
 			display: flex;
 			justify-content: space-between;
 		}
-		.foot .right .action{
+
+		.foot .right .action {
 			padding: 8px 60px;
 		}
-		.foot img{
+
+		.foot img {
 			width: 70px;
 		}
-		.foot .left{
+
+		.foot .left {
 			display: flex;
 			width: 50%;
+			justify-content: center;
 		}
-		.foot .right{
+
+		.foot .right {
 			width: 50%;
 		}
-		.foot .gif span{
+
+		.foot .gif span {
 			margin-right: 0;
 			display: block;
 		}
-		.foot .gif:first-child span{
+
+		.foot .gif:first-child span {
 			background: #b5cfea;
 		}
-		.foot .gif:last-child span{
+
+		.foot .gif:last-child span {
 			background: #c4bf95;
 		}
-		.foot .right span:first-child{
+
+		.foot .right span:first-child {
 			background: #92d14f;
 		}
-		.foot .right span:last-child{
+
+		.foot .right span:last-child {
 			background: #fd0100;
 		}
-		.foot .gif:last-child{
+
+		.foot .gif:last-child {
 			margin-right: 40px;
 		}
-		.foot .gif{
+
+		.foot .gif {
 			width: 50%;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 		}
-		.foot .right .next{
+
+		.foot .right .next {
 			width: fit-content;
 			margin-top: 8px;
 			color: #fff;
@@ -106,7 +134,8 @@
 			margin: 8px auto 0 auto;
 			position: relative;
 		}
-		.foot .right .next::before{
+
+		.foot .right .next::before {
 			content: "";
 			position: absolute;
 			border-width: 10px;
@@ -115,7 +144,8 @@
 			top: 0;
 			border-color: #4881be #4881be #4881be transparent;
 		}
-		.foot .right .next::after{
+
+		.foot .right .next::after {
 			content: "";
 			position: absolute;
 			border-width: 16px;
@@ -125,11 +155,48 @@
 			transform: translateY(-50%);
 			border-color: transparent transparent transparent #4881be;
 		}
+
+		table th {
+			height: 30px;
+			width: 100%;
+		}
+
+		table td {
+			min-height: 122px;
+			width: 100%;
+			display: flex;
+		}
+
+		table {
+			width: 100%;
+			margin: 8px 20px;
+		}
+
+		table span {
+			margin: 0 !important;
+			background: unset !important;
+			background: #dce6f2 !important;
+		}
+
+		table {
+			border: 1px solid #7d9ecd !important;
+		}
+
+		table th span {
+			background: unset !important;
+			border: unset !important;
+		}
+
+		table td span {
+			margin: 0 2px !important;
+		}
 	</style>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
-	<!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> -->
+	<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script> -->
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+		integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 </head>
+
 <body>
 	<div class="container">
 		<div class="head">
@@ -142,43 +209,69 @@
 		<div class="main">
 			<div class="question">
 				<div class="top">
-					<span id="q1">Kết bạn với người lạ trên mạng xã hội</span>
-					<span id="q2">Đi một mình khu vực tối, vắng người</span>
+					<span id="q1" class="event" draggable="true">Kết bạn với người lạ trên mạng xã hội</span>
+					<span id="q2" class="event" draggable="true">Đi một mình khu vực tối, vắng người</span>
 				</div>
 				<div class="bot">
-					<span id="q3">Đi nhờ xe của người lạ, nhận quà của người lạ</span>
-					<span id="q4">Ở gần người nhà khi người đó nóng tính hoặc say rượu, bia</span>
-					<span id="q5">Va chạm với bạn và ứng xử không tốt</span>
+					<span id="q3" class="event" draggable="true">Đi nhờ xe của người lạ, nhận quà của người lạ</span>
+					<span id="q4" class="event" draggable="true">Ở gần người nhà khi người đó nóng tính hoặc say rượu,
+						bia</span>
+					<span id="q5" class="event" draggable="true">Va chạm với bạn và ứng xử không tốt</span>
 				</div>
 			</div>
 			<div class="answer">
 				<div class="top">
-					<span style="background: #ffc000">a)Xâm hại trong gia đình</span>
-					<span style="background: #92d14f">b)Xâm hại trong trường học</span>
+					<table id="a" style="background: #ffc000;">
+						<tr>
+							<th colspan="3"><span style="height: 26px;">a)Xâm hại trong gia đình</span></th>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+					</table>
+					<table id="b" style="background: #92d14f;">
+						<tr>
+							<th colspan="3"><span style="height: 26px;">b)Xâm hại trong trường học</span></th>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+					</table>
 				</div>
 				<div class="bot">
-					<div style="width: 50%; display: flex;">
-						<span style="background: #558ed5; margin-right: 0; border-right: unset;">c)Xâm hại trong cộng đồng</span>
-						<span style="background: #558ed5; margin-left: 0; border-left: unset;"></span>
-					</div>
-					<span style="background: #ffff00; width: calc(50% - 40px);">d)Xâm hại trong trên mạng</span>
+					<table id="c" style="background: #558ed5;">
+						<tr>
+							<th colspan="3"><span style="height: 26px;">c)Xâm hại trong cộng đồng</span></th>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+					</table>
+					<table id="d" style="background: #ffff00;">
+						<tr>
+							<th colspan="3"><span style="height: 26px;">d)Xâm hại trong trên mạng</span></th>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</div>
 		<div class="foot">
 			<div class="left">
-				<div class="gif">
+				<div class="gif" id="check_true">
 					<span>Đúng rồi!</span>
 					<img src="./tenor.gif" alt="success">
 				</div>
-				<div class="gif">
+				<div class="gif" id="check_false">
 					<span>Chưa đúng!</span>
 					<img src="./tenor_2.gif" alt="fail">
 				</div>
 			</div>
 			<div class="right">
 				<div class="action">
-					<span>Nộp bài</span>
+					<span id="submit">Nộp bài</span>
 					<span id="reset">Làm lại</span>
 				</div>
 				<div class="next">Bài tiếp</div>
@@ -188,82 +281,68 @@
 	<script type="text/javascript">
 
 		var correctCards = 0;
-		$( init );
+		$(init);
 
 		function init() {
 
-		  // Reset the game
-			$('#reset').click(function(e){
-		  		window.location.reload(true);
-		  	});
+			// Reset the game
+			$('#reset').click(function (e) {
+				window.location.reload(true);
+			});
 
-		  // Create the pile of shuffled cards
+			// Create the pile of shuffled cards
 			var cauhoi = [
-				'Kết bạn với người lạ trên mạng xã hội', 
-				'Đi một mình khu vực tối, vắng người', 
-				'Đi nhờ xe của người lạ, nhận quà của người lạ', 
-				'Ở gần người nhà khi người đó nóng tính hoặc say rượu, bia', 
+				'Kết bạn với người lạ trên mạng xã hội',
+				'Đi một mình khu vực tối, vắng người',
+				'Đi nhờ xe của người lạ, nhận quà của người lạ',
+				'Ở gần người nhà khi người đó nóng tính hoặc say rượu, bia',
 				'Va chạm với bạn và ứng xử không tốt'
 			];
+			var dapan = ['a-4', 'b-5', 'c-3', 'c-2', 'd-1'];
 
-			for ( var i=1; i<=cauhoi.length; i++ ) {
-			  	$span = $('.question').find('span');
-		  		$($span[i-1]).data( 'number', i ).attr( 'id', 'card'+i ).draggable( {
-		      
-				    stack: '.question span',
-				    cursor: 'move',
-				    revert: true
-		    	} ); 
-			}
-
-			  // Create the card slots
-		    $span = $('.answer').find('span');
-		    $($span[0]).data( 'number', 4 ).droppable( {
-			    accept: '.question span',
-			    hoverClass: 'hovered',
-			    drop: handleCardDrop
-		    } );
-		    $($span[1]).data( 'number', 5 ).droppable( {
-			    accept: '.question span',
-			    hoverClass: 'hovered',
-			    drop: handleCardDrop
-		    } );
-		    $($span[2]).data( 'number', 3 ).droppable( {
-			    accept: '.question span',
-			    hoverClass: 'hovered',
-			    drop: handleCardDrop
-		    } );
-		    $($span[3]).data( 'number', 2 ).droppable( {
-			    accept: '.question span',
-			    hoverClass: 'hovered',
-			    drop: handleCardDrop
-		    } );
-		    $($span[4]).data( 'number', 1 ).droppable( {
-			    accept: '.question span',
-			    hoverClass: 'hovered',
-			    drop: handleCardDrop
-		    } );
+			// for ( var i=1; i<=cauhoi.length; i++ ) {
+			$span = $('.question').find('span');
+			$span.each(function (index, item) {
+				$('.event').on("dragstart", function (event) {
+					var dt = event.originalEvent.dataTransfer;
+					$(this).css('cursor', 'grab');
+					dt.setData('Text', $(this).attr('id'));
+				});
+				$('table td').on("dragenter dragover drop", function (event) {
+					event.preventDefault();
+					if (event.type === 'drop') {
+						var data = event.originalEvent.dataTransfer.getData('Text', $(this).attr('id'));
+						de = $('#' + data).detach();
+						de.appendTo($(this));
+						$width = 458 / ($(this).parent().find('span').length) - 8;
+						$(this).parent().parent().find('span').each(function (indexT, itemT) {
+							if ($(itemT).parent().prop('colspan') != 3) {
+								$(itemT).css({ 'width': $width + 'px', 'minHeight': '120px' });
+							}
+						})
+					};
+				});
+			})
+			$('#submit').off('click').on('click', function (e) {
+				$arrAns = [];
+				$('table span').each(function (index, item) {
+					$ans = $(item).prop('id');
+					if ($ans != '') {
+						$check = $(item).parent().parent().parent().parent().prop('id') + '-' + $ans.slice($ans.length - 1, $ans.length);
+						$arrAns.push($check);
+					}
+				})
+				$checkTrue = $arrAns.length === dapan.length && $arrAns.sort().every(function (value, index) {
+					return value === dapan.sort()[index]
+				});
+				if($checkTrue){
+					$('#check_false').css('display', 'none');
+				}else{
+					$('#check_true').css('display', 'none');
+				}
+			})
 		}
-
-		function handleCardDrop( event, ui ) {
-			var slotNumber = $(this).data( 'number' );
-			var cardNumber = ui.draggable.data( 'number' );
-
-			  // If the card was dropped to the correct slot,
-			  // change the card colour, position it directly
-			  // on top of the slot, and prevent it being dragged
-			  // again
-
-			if ( slotNumber == cardNumber ) {
-			    ui.draggable.addClass( 'correct' );
-			    ui.draggable.draggable( 'disable' );
-			    $(this).droppable( 'disable' );
-			    ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
-			    ui.draggable.draggable( 'option', 'revert', false );
-			    correctCards++;
-			}
-		}
-
 	</script>
 </body>
+
 </html>
