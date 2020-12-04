@@ -335,10 +335,12 @@
 				$checkTrue = $arrAns.length === dapan.length && $arrAns.sort().every(function (value, index) {
 					return value === dapan.sort()[index]
 				});
-				if($checkTrue){
+				if($check){
 					$('#check_false').css('display', 'none');
+					$('#check_true').css('display', '');
 				}else{
 					$('#check_true').css('display', 'none');
+					$('#check_false').css('display', '');
 				}
 			})
 		}
