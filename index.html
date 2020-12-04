@@ -223,7 +223,7 @@
 				<div class="top">
 					<table id="a" style="background: #ffc000;">
 						<tr>
-							<th colspan="3"><span style="height: 26px;">a)Xâm hại trong gia đình</span></th>
+							<th colspan="3"><span style="height: 22px;">a)Xâm hại trong gia đình</span></th>
 						</tr>
 						<tr>
 							<td></td>
@@ -231,7 +231,7 @@
 					</table>
 					<table id="b" style="background: #92d14f;">
 						<tr>
-							<th colspan="3"><span style="height: 26px;">b)Xâm hại trong trường học</span></th>
+							<th colspan="3"><span style="height: 22px;">b)Xâm hại trong trường học</span></th>
 						</tr>
 						<tr>
 							<td></td>
@@ -241,7 +241,7 @@
 				<div class="bot">
 					<table id="c" style="background: #558ed5;">
 						<tr>
-							<th colspan="3"><span style="height: 26px;">c)Xâm hại trong cộng đồng</span></th>
+							<th colspan="3"><span style="height: 22px;">c)Xâm hại trong cộng đồng</span></th>
 						</tr>
 						<tr>
 							<td></td>
@@ -249,7 +249,7 @@
 					</table>
 					<table id="d" style="background: #ffff00;">
 						<tr>
-							<th colspan="3"><span style="height: 26px;">d)Xâm hại trong trên mạng</span></th>
+							<th colspan="3"><span style="height: 22px;">d)Xâm hại trong trên mạng</span></th>
 						</tr>
 						<tr>
 							<td></td>
@@ -314,11 +314,13 @@
 						var data = event.originalEvent.dataTransfer.getData('Text', $(this).attr('id'));
 						de = $('#' + data).detach();
 						de.appendTo($(this));
-						$width = 458 / ($(this).parent().find('span').length) - 8;
-						$(this).parent().parent().find('span').each(function (indexT, itemT) {
-							if ($(itemT).parent().prop('colspan') != 3) {
-								$(itemT).css({ 'width': $width + 'px', 'minHeight': '120px' });
-							}
+						$('table').each(function(indexTable, itemTable){
+							$width = 458 / ($(itemTable).find('span').length - 1) - 8;
+							$(itemTable).find('span').each(function (indexT, itemT) {
+								if ($(itemT).parent().prop('colspan') != 3) {
+									$(itemT).css({ 'width': $width + 'px', 'minHeight': '120px' });
+								}
+							})
 						})
 					};
 				});
