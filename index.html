@@ -41,7 +41,7 @@
 
 		.main .question span {
 			width: 180px;
-			height: 80px;
+			min-height: 80px;
 			margin: 8px 20px;
 			display: flex;
 			align-items: center;
@@ -57,10 +57,13 @@
 
 		.main .answer span {
 			width: 100%;
-			height: 100px;
 			margin: 8px 20px;
 			background: #dce6f2;
 			text-align: left;
+		}
+
+		table td span{
+			min-height: 100px;
 		}
 
 		.foot span {
@@ -162,24 +165,19 @@
 		}
 
 		table td {
-			min-height: 122px;
+			min-height: 82px;
 			width: 100%;
 			display: flex;
 		}
 
 		table {
 			width: 100%;
-			margin: 8px 20px;
 		}
 
 		table span {
 			margin: 0 !important;
 			background: unset !important;
 			background: #dce6f2 !important;
-		}
-
-		table {
-			border: 1px solid #7d9ecd !important;
 		}
 
 		table th span {
@@ -189,6 +187,37 @@
 
 		table td span {
 			margin: 0 2px !important;
+		}
+		.main .answer .table_wrap{
+			flex: 1;
+			margin: 8px 20px;
+			border: 1px solid #7d9ecd !important;
+		}
+		@media (max-width: 576px) {
+			.foot .left, .foot .right .action{
+				padding: unset;
+			}
+			#a, #c{
+				margin: 8px 8px 8px 0;
+			}
+			#b, #d{
+				margin: 8px 8px 8px 0;
+			}
+			table td{
+				display: block;
+			}
+			.main .answer .top .table_wrap:first-child, .main .answer .bot .table_wrap:first-child{
+				margin-left: 0;
+			}
+			.main .answer .top .table_wrap:last-child, .main .answer .bot .table_wrap:last-child{
+				margin-right: 0;
+			}
+			.foot .right{
+				margin-left: 40px;
+			}
+			.foot .left #check_false{
+				margin-right: 0;
+			}
 		}
 	</style>
 	<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
@@ -221,40 +250,48 @@
 			</div>
 			<div class="answer">
 				<div class="top">
-					<table id="a" style="background: #ffc000;">
-						<tr>
-							<th colspan="3"><span style="height: 22px;">a)Xâm hại trong gia đình</span></th>
-						</tr>
-						<tr>
-							<td></td>
-						</tr>
-					</table>
-					<table id="b" style="background: #92d14f;">
-						<tr>
-							<th colspan="3"><span style="height: 22px;">b)Xâm hại trong trường học</span></th>
-						</tr>
-						<tr>
-							<td></td>
-						</tr>
-					</table>
+					<div class="table_wrap" style="background: #ffc000;">
+						<table id="a">
+							<tr>
+								<th colspan="3"><span style="min-height: 22px;">a)Xâm hại trong gia đình</span></th>
+							</tr>
+							<tr>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+					<div class="table_wrap" style="background: #92d14f;">
+						<table id="b">
+							<tr>
+								<th colspan="3"><span style="min-height: 22px;">b)Xâm hại trong trường học</span></th>
+							</tr>
+							<tr>
+								<td></td>
+							</tr>
+						</table>
+					</div>
 				</div>
 				<div class="bot">
-					<table id="c" style="background: #558ed5;">
-						<tr>
-							<th colspan="3"><span style="height: 22px;">c)Xâm hại trong cộng đồng</span></th>
-						</tr>
-						<tr>
-							<td></td>
-						</tr>
-					</table>
-					<table id="d" style="background: #ffff00;">
-						<tr>
-							<th colspan="3"><span style="height: 22px;">d)Xâm hại trong trên mạng</span></th>
-						</tr>
-						<tr>
-							<td></td>
-						</tr>
-					</table>
+					<div class="table_wrap" style="background: #558ed5;">
+						<table id="c">
+							<tr>
+								<th colspan="3"><span style="min-height: 22px;">c)Xâm hại trong cộng đồng</span></th>
+							</tr>
+							<tr>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+					<div class="table_wrap" style="background: #ffff00;">
+						<table id="d">
+							<tr>
+								<th colspan="3"><span style="min-height: 22px;">d)Xâm hại trong trên mạng</span></th>
+							</tr>
+							<tr>
+								<td></td>
+							</tr>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -262,11 +299,11 @@
 			<div class="left">
 				<div class="gif" id="check_true">
 					<span>Đúng rồi!</span>
-					<img src="./tenor.gif" alt="success">
+					<img src="./gif/tenor.gif" alt="success">
 				</div>
 				<div class="gif" id="check_false">
 					<span>Chưa đúng!</span>
-					<img src="./tenor_2.gif" alt="fail">
+					<img src="./gif/tenor_2.gif" alt="fail">
 				</div>
 			</div>
 			<div class="right">
@@ -314,14 +351,14 @@
 						var data = event.originalEvent.dataTransfer.getData('Text', $(this).attr('id'));
 						de = $('#' + data).detach();
 						de.appendTo($(this));
-						$('table').each(function(indexTable, itemTable){
-							$width = 458 / ($(itemTable).find('span').length - 1) - 8;
-							$(itemTable).find('span').each(function (indexT, itemT) {
-								if ($(itemT).parent().prop('colspan') != 3) {
-									$(itemT).css({ 'width': $width + 'px', 'minHeight': '120px' });
-								}
-							})
-						})
+						// $('table').each(function(indexTable, itemTable){
+							// $width = 458 / ($(itemTable).find('span').length - 1) - 8;
+							// $(itemTable).find('span').each(function (indexT, itemT) {
+							// 	if ($(itemT).parent().prop('colspan') != 3) {
+									// $(itemT).css({ 'width': $width + 'px', 'minHeight': '120px' });
+								// }
+							// })
+						// })
 					};
 				});
 			})
